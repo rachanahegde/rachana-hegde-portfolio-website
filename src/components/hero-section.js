@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="relative pt-12 py-36 bg-[url('/flower_background.png')] bg-cover bg-center">
+    <section className="relative pt-20 pb-85 bg-[url('/flower_background.png')] bg-[length:110%_auto] bg-center bg-no-repeat">
       {/* Decorative floral illustration behind text */}
       <div className="absolute inset-0 -z-10 opacity-20 bg-[url('/floral-lineart.svg')] bg-center bg-no-repeat bg-contain"></div>
 
