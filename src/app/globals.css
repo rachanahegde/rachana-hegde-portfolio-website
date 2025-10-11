@@ -14,8 +14,4 @@
 /* 🌸 Base theme */
 body {
   @apply bg-[var(--color-bg)] text-[var(--color-text)] font-[Inter] antialiased;
-  background-image: url('/floral-bg.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 }
