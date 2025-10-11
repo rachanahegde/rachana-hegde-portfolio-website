@@ -16,7 +16,7 @@ import {
 
 export default function AboutSection() {
   return (
-    <section className="relative py-24 bg-[var(--color-bg)] text-[var(--color-text)]">
+    <section className="relative pb-24 backdrop-blur-[1px] bg-[var(--color-bg)]/70 text-[var(--color-text)]">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
         {/* Left: Image */}
         <motion.div
