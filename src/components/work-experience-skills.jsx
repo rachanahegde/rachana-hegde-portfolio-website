@@ -4,7 +4,18 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import Container from "@/components/ui/container";
-import { Briefcase, Code2, Sparkles, CheckCircle2, Star } from "lucide-react";
+import {
+  Briefcase,
+  Code2,
+  Sparkles,
+  CheckCircle2,
+  Star,
+  Cpu,
+  Globe,
+  Settings,
+  Wrench,
+  Lightbulb,
+} from "lucide-react";
 
 export default function WorkExperienceSkills() {
   const [tab, setTab] = useState("experience");
@@ -12,7 +23,7 @@ export default function WorkExperienceSkills() {
 
   const skills = {
     "Web Development": {
-      icon: "🌐",
+      icon: <Globe className="text-[var(--color-primary)]" size={26} />,
       color: "from-pink-100 via-white to-sand/30",
       skills: [
         "HTML/CSS",
@@ -25,7 +36,7 @@ export default function WorkExperienceSkills() {
       ],
     },
     Backend: {
-      icon: "⚙️",
+      icon: <Settings className="text-[var(--color-primary)]" size={26} />,
       color: "from-sand/30 via-white to-green-50",
       skills: [
         "Express.js (Beginner)",
@@ -34,12 +45,12 @@ export default function WorkExperienceSkills() {
       ],
     },
     AI: {
-      icon: "🤖",
+      icon: <Cpu className="text-[var(--color-primary)]" size={26} />,
       color: "from-blue-50 via-white to-pink-50",
       skills: ["Python", "RAG", "Agentic AI", "LLMs", "Prompt Engineering"],
     },
     Other: {
-      icon: "🛠️",
+      icon: <Wrench className="text-[var(--color-primary)]" size={26} />,
       color: "from-sand/20 via-white to-gray-50",
       skills: [
         "Software Design",
@@ -51,7 +62,7 @@ export default function WorkExperienceSkills() {
       ],
     },
     "Soft Skills": {
-      icon: "💡",
+      icon: <Lightbulb className="text-[var(--color-primary)]" size={26} />,
       color: "from-pink-50 via-white to-sand/30",
       skills: [
         "Teamwork",
