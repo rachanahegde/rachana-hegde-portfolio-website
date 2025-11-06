@@ -1,6 +1,7 @@
 import HeroSection from "@/components/hero-section";
 import AboutSection from "@/components/about-section";
 import FeaturedProjects from "@/components/featured-projects";
+import WorkExperienceSkills from "@/components/work-experience-skills";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <HeroSection />
       <AboutSection />
       <FeaturedProjects />
+      <WorkExperienceSkills />
     </main>
   );
 }
