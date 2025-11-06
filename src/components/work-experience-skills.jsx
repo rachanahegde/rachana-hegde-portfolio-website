@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import Container from "@/components/ui/container";
-import { Briefcase, Code2, Sparkles, CheckCircle2 } from "lucide-react";
+import { Briefcase, Code2, Sparkles, CheckCircle2, Star } from "lucide-react";
 
 export default function WorkExperienceSkills() {
   const [tab, setTab] = useState("experience");
@@ -86,7 +86,7 @@ export default function WorkExperienceSkills() {
           </p>
         </motion.div>
 
-        {/* Enhanced Tabs */}
+        {/* Tabs */}
         <div className="flex justify-center gap-4 mb-12">
           <button
             onClick={() => setTab("experience")}
@@ -100,13 +100,6 @@ export default function WorkExperienceSkills() {
               <Briefcase size={18} />
               Experience
             </span>
-            {tab === "experience" && (
-              <motion.div
-                layoutId="activeTab"
-                className="absolute inset-0 bg-[var(--color-primary)]"
-                transition={{ type: "spring", duration: 0.6 }}
-              />
-            )}
           </button>
           <button
             onClick={() => setTab("skills")}
@@ -120,17 +113,10 @@ export default function WorkExperienceSkills() {
               <Code2 size={18} />
               Skills
             </span>
-            {tab === "skills" && (
-              <motion.div
-                layoutId="activeTab"
-                className="absolute inset-0 bg-[var(--color-primary)]"
-                transition={{ type: "spring", duration: 0.6 }}
-              />
-            )}
           </button>
         </div>
 
-        {/* Content with AnimatePresence */}
+        {/* Animated Content */}
         <AnimatePresence mode="wait">
           {tab === "experience" ? (
             <motion.div
@@ -141,7 +127,7 @@ export default function WorkExperienceSkills() {
               transition={{ duration: 0.5 }}
             >
               <Card className="p-8 sm:p-12 bg-gradient-to-br from-white via-pink-50 to-sand/40 backdrop-blur-xl border border-pink-100 rounded-3xl shadow-2xl max-w-4xl mx-auto relative overflow-hidden">
-                {/* Decorative gradient overlay */}
+                {/* Decorative overlay */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-pink-200/20 to-transparent rounded-full blur-3xl" />
 
                 <div className="relative z-10">
@@ -162,6 +148,7 @@ export default function WorkExperienceSkills() {
                     </div>
                   </div>
 
+                  {/* Key Responsibilities */}
                   <div className="mt-8">
                     <div className="flex items-center gap-2 mb-6">
                       <Sparkles
@@ -191,6 +178,33 @@ export default function WorkExperienceSkills() {
                         </motion.div>
                       ))}
                     </div>
+                  </div>
+
+                  {/* Section Divider */}
+                  <div className="border-t border-pink-100 my-10"></div>
+
+                  {/* Company Projects Highlight */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-6">
+                      <Star className="text-[var(--color-primary)]" size={20} />
+                      <h4 className="text-lg font-semibold text-[var(--color-text)]">
+                        Projects & Prototypes
+                      </h4>
+                    </div>
+                    <ul className="space-y-3 text-[var(--color-text)]">
+                      <li>
+                        <strong>AI Voice Transcription Prototype:</strong> Built
+                        a Whisper API-based transcription web app with
+                        searchable transcripts, timestamps, and dynamic sentence
+                        highlighting.
+                      </li>
+                      <li>
+                        <strong>Document-Embedding Chatbot Prototype:</strong>{" "}
+                        Built a RAG chatbot using LlamaIndex and LLMs to answer
+                        company-specific questions and assist internal
+                        onboarding.
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </Card>
