@@ -18,7 +18,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { projects } from "./data/projects";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { BorderBeam } from "@/components/ui/border-beam";
 import { Meteors } from "@/components/ui/meteors";
 
 export default function FeaturedProjects() {
@@ -60,10 +59,8 @@ export default function FeaturedProjects() {
                 onMouseLeave={() => setHoveredCard(null)}
                 onClick={() => setSelectedProject(project)}
               >
-                {/* 🔸 Fixed card size + solid background */}
-                <div className="relative overflow-hidden rounded-2xl shadow-lg bg-white border border-pink-100 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] h-[420px] flex flex-col">
-                  {/* Animated border beam on hover */}
-                  <BorderBeam size={250} duration={12} delay={9} />
+                {/* 🔸 Optimized card - removed BorderBeam for performance */}
+                <div className="relative overflow-hidden rounded-2xl shadow-lg bg-white border-2 border-pink-100 transition-all duration-200 hover:shadow-xl hover:border-[var(--color-primary)] h-[420px] flex flex-col">
                   {/* Image Section */}
                   <div className="relative h-48 w-full overflow-hidden flex-shrink-0 bg-gradient-to-br from-pink-50 to-sand/30">
                     <Image
@@ -71,61 +68,54 @@ export default function FeaturedProjects() {
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                       loading={index < 3 ? "eager" : "lazy"}
                       quality={75}
                       unoptimized
                     />
 
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-pink-200/20 via-rose-200/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Simplified overlay */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200" />
 
-                    {/* Hover Buttons */}
-                    <AnimatePresence>
-                      {hoveredCard === project.id && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 20 }}
-                          className="absolute inset-0 flex items-center justify-center gap-4"
-                        >
-                          {/* View Button */}
-                          <Button
-                            variant="sage"
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              window.open(project.demoUrl, "_blank");
-                            }}
-                            className="flex items-center gap-2 px-3 py-3 rounded-full font-small 
+                    {/* Hover Buttons - simplified animation */}
+                    {hoveredCard === project.id && (
+                      <div className="absolute inset-0 flex items-center justify-center gap-4 animate-in fade-in duration-150">
+                        {/* View Button */}
+                        <Button
+                          variant="sage"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(project.demoUrl, "_blank");
+                          }}
+                          className="flex items-center gap-2 px-3 py-3 rounded-full font-small 
                         bg-[var(--color-primary)] text-white 
                         hover:bg-[var(--color-accent)] 
                         hover:shadow-[0_0_18px_var(--color-primary)] 
                         transition-all duration-300 shadow-md text-xs"
-                          >
-                            <ExternalLink size={16} />
-                            View
-                          </Button>
+                        >
+                          <ExternalLink size={16} />
+                          View
+                        </Button>
 
-                          {/* Code Button */}
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              window.open(project.githubUrl, "_blank");
-                            }}
-                            className="flex items-center gap-2 px-3 py-3 rounded-full font-medium 
+                        {/* Code Button */}
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(project.githubUrl, "_blank");
+                          }}
+                          className="flex items-center gap-2 px-3 py-3 rounded-full font-medium 
                         bg-[var(--color-bg)] text-[var(--color-text)] 
                         hover:shadow-[0_0_18px_var(--color-sand)] 
                         hover:brightness-105 transition-all duration-300 shadow-md border-0 text-xs"
-                          >
-                            <Github size={16} />
-                            Code
-                          </Button>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                        >
+                          <Github size={16} />
+                          Code
+                        </Button>
+                      </div>
+                    )}
                   </div>
 
                   {/* Content Section */}
@@ -159,21 +149,23 @@ export default function FeaturedProjects() {
         </div>
       </div>
 
-      {/* Modal (unchanged except color tweaks) */}
+      {/* Modal - Opens instantly */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.05 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.98, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white via-pink-50 to-sand/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-pink-100"
+              exit={{ scale: 0.98, opacity: 0 }}
+              transition={{ duration: 0.1, ease: "easeOut" }}
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-pink-100"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -247,6 +239,6 @@ export default function FeaturedProjects() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </section >
   );
 }
