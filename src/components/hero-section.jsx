@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Particles background effect */}
       <Particles
         className="absolute inset-0 -z-10"
-        quantity={80}
+        quantity={40}
         ease={80}
         color="#e8a6b8"
         refresh

@@ -108,7 +108,7 @@ export default function WorkExperienceSkills() {
     <section className="relative py-24 bg-[var(--color-bg)]/70 text-[var(--color-text)]">
       <Container>
         {/* Statistics Section with NumberTicker for Experience, Projects, and Technologies */}
-        <BlurFade delay={0.1} inView>
+        <BlurFade delay={0.05} inView>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
             <div className="text-center p-6 bg-white/60 rounded-2xl border border-pink-100 shadow-md hover:shadow-lg transition-shadow">
               <div className="flex items-center justify-center gap-2 mb-2">
@@ -147,7 +147,7 @@ export default function WorkExperienceSkills() {
         </BlurFade>
 
         {/* Header with HyperText */}
-        <BlurFade delay={0.2} inView>
+        <BlurFade delay={0.1} inView>
           <div className="text-center mb-8">
             <HyperText
               className="text-3xl sm:text-4xl font-[Playfair_Display] font-semibold mb-4"
@@ -163,9 +163,9 @@ export default function WorkExperienceSkills() {
         </BlurFade>
 
         {/* Tech Stack Marquee */}
-        <BlurFade delay={0.3} inView>
+        <BlurFade delay={0.15} inView>
           <div className="mb-12 overflow-hidden">
-            <Marquee pauseOnHover className="[--duration:30s]">
+            <Marquee pauseOnHover className="[--duration:40s]">
               {techStack.map((tech) => (
                 <div
                   key={tech.name}
@@ -288,7 +288,7 @@ export default function WorkExperienceSkills() {
               {Object.entries(skills).map(([category, data], index) => (
                 <BlurFade
                   key={category}
-                  delay={0.3 + index * 0.1}
+                  delay={0.15 + index * 0.05}
                   inView
                 >
                   <div

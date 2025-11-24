@@ -39,6 +39,33 @@ body {
   @apply bg-[var(--color-bg)] text-[var(--color-text)] font-[Inter] antialiased;
 }
 
+/* ⚡ Performance Optimizations */
+* {
+  /* Enable hardware acceleration for transforms and opacity */
+  will-change: auto;
+}
+
+/* Optimize animations by using GPU-accelerated properties */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @theme inline {
   --color-border: var(--border);
   --color-input: var(--input);
@@ -130,24 +157,28 @@ body {
 
   --animate-marquee: marquee var(--duration) infinite linear;
 
-  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite
-;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
+
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
-  }}
+  }
+}
 
 @layer base {
   * {

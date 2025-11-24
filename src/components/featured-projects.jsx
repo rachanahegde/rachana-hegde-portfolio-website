@@ -28,7 +28,7 @@ export default function FeaturedProjects() {
     <section className="relative pb-24 bg-[var(--color-bg)]/70 text-[var(--color-text)] overflow-hidden">
       {/* Meteors background effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <Meteors number={20} />
+        <Meteors number={10} />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
