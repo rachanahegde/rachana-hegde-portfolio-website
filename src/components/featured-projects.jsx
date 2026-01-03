@@ -183,6 +183,26 @@ export default function FeaturedProjects() {
                   <p className="text-lg text-[var(--color-text)/80]">
                     {selectedProject.shortDescription}
                   </p>
+                  <div className="flex flex-wrap gap-4 mt-6">
+                    <Button
+                      onClick={() =>
+                        window.open(selectedProject.demoUrl, "_blank")
+                      }
+                      className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] hover:bg-pink-400 text-white shadow-lg transition-all"
+                    >
+                      <Globe size={18} />
+                      Live Demo
+                    </Button>
+                    <Button
+                      onClick={() =>
+                        window.open(selectedProject.githubUrl, "_blank")
+                      }
+                      className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-text)] hover:bg-[#2b2424] text-white shadow-lg transition-all"
+                    >
+                      <Github size={18} />
+                      GitHub
+                    </Button>
+                  </div>
                 </div>
 
                 <div className="mb-8">
@@ -201,39 +221,62 @@ export default function FeaturedProjects() {
                     />
                     <h3 className="text-xl font-semibold">Key Features</h3>
                   </div>
-                  <ul className="space-y-2">
+                  <ul className="space-y-4">
                     {selectedProject.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <CheckCircle2
                           className="text-[var(--color-leaf)] mt-1 flex-shrink-0"
                           size={18}
                         />
-                        <span>{feature}</span>
+                        <span className="leading-relaxed">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="flex flex-wrap gap-4">
-                  <Button
-                    onClick={() =>
-                      window.open(selectedProject.demoUrl, "_blank")
-                    }
-                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] hover:bg-pink-400 text-white shadow-lg transition-all"
-                  >
-                    <Globe size={18} />
-                    Live Demo
-                  </Button>
-                  <Button
-                    onClick={() =>
-                      window.open(selectedProject.githubUrl, "_blank")
-                    }
-                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-text)] hover:bg-[#2b2424] text-white shadow-lg transition-all"
-                  >
-                    <Github size={18} />
-                    GitHub
-                  </Button>
-                </div>
+                {selectedProject.techStack && (
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Code2 className="text-[var(--color-primary)]" size={20} />
+                      <h3 className="text-xl font-semibold">Tech Stack</h3>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                      {selectedProject.techStack.map((tech, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-3 p-3 rounded-xl bg-pink-50/50 border border-pink-100"
+                        >
+                          <tech.icon className="text-[var(--color-primary)]" size={20} />
+                          <span className="font-medium">{tech.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {selectedProject.implementation && (
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Zap className="text-[var(--color-primary)]" size={20} />
+                      <h3 className="text-xl font-semibold">Implementation</h3>
+                    </div>
+                    <p className="leading-relaxed p-4 rounded-2xl bg-slate-50 border border-slate-100 italic text-[var(--color-text)/90]">
+                      {selectedProject.implementation}
+                    </p>
+                  </div>
+                )}
+
+                {selectedProject.challenges && (
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Target className="text-[var(--color-primary)]" size={20} />
+                      <h3 className="text-xl font-semibold">Challenges & Learnings</h3>
+                    </div>
+                    <p className="leading-relaxed p-4 rounded-2xl bg-amber-50/50 border border-amber-100 text-[var(--color-text)/90]">
+                      {selectedProject.challenges}
+                    </p>
+                  </div>
+                )}
               </div>
             </motion.div>
           </motion.div>
