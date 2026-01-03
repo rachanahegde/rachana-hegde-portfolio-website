@@ -85,7 +85,7 @@ export default function FeaturedProjects() {
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                       loading={index < 3 ? "eager" : "lazy"}
                       quality={75}
                       unoptimized
@@ -236,7 +236,7 @@ export default function FeaturedProjects() {
                             src={selectedProject.images[currentImageIndex]}
                             alt={`${selectedProject.title} screenshot ${currentImageIndex + 1}`}
                             fill
-                            className="object-cover"
+                            className="object-cover object-top"
                             unoptimized
                           />
                         </motion.div>
