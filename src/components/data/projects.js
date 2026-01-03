@@ -51,6 +51,7 @@ export const projects = [
     technologies: ["React", "D3.js", "Firebase", "Material UI", "JavaScript"],
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    images: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"],
     demoUrl: "#",
     githubUrl: "#",
     overview:
@@ -82,6 +83,7 @@ export const projects = [
     technologies: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS"],
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    images: ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"],
     demoUrl: "#",
     githubUrl: "#",
     overview:
@@ -113,6 +115,7 @@ export const projects = [
     technologies: ["Python", "LangChain", "Pinecone", "FastAPI", "React"],
     image:
       "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80",
+    images: ["https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80"],
     demoUrl: "#",
     githubUrl: "#",
     overview:
@@ -143,6 +146,7 @@ export const projects = [
     technologies: ["React", "TypeScript", "Storybook", "CSS Modules"],
     image:
       "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80",
+    images: ["https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80"],
     demoUrl: "#",
     githubUrl: "#",
     overview:
@@ -173,6 +177,7 @@ export const projects = [
     technologies: ["Next.js", "WebSockets", "Redis", "MongoDB", "React"],
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    images: ["https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"],
     demoUrl: "#",
     githubUrl: "#",
     overview:

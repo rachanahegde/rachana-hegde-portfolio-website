@@ -14,6 +14,8 @@ import {
   Code2,
   Cpu,
   Globe,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { projects } from "./data/projects";
@@ -23,6 +25,21 @@ import { Meteors } from "@/components/ui/meteors";
 export default function FeaturedProjects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = (e) => {
+    e.stopPropagation();
+    if (selectedProject?.images) {
+      setCurrentImageIndex((prev) => (prev + 1) % selectedProject.images.length);
+    }
+  };
+
+  const prevImage = (e) => {
+    e.stopPropagation();
+    if (selectedProject?.images) {
+      setCurrentImageIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
+    }
+  };
 
   return (
     <section id="featured-projects" className="relative pb-24 bg-[var(--color-bg)]/70 text-[var(--color-text)] overflow-hidden">
@@ -165,6 +182,7 @@ export default function FeaturedProjects() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.98, opacity: 0 }}
               transition={{ duration: 0.1, ease: "easeOut" }}
+              onAnimationComplete={() => setCurrentImageIndex(0)}
               className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-pink-100"
               onClick={(e) => e.stopPropagation()}
             >
@@ -200,6 +218,68 @@ export default function FeaturedProjects() {
                       GitHub
                     </Button>
                   </div>
+
+                {/* 🔸 Image Carousel */}
+                {selectedProject.images && selectedProject.images.length > 0 && (
+                  <div className="mt-8 relative group/carousel">
+                    <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-pink-50/30 border border-pink-100 shadow-inner">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentImageIndex}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="relative w-full h-full"
+                        >
+                          <Image
+                            src={selectedProject.images[currentImageIndex]}
+                            alt={`${selectedProject.title} screenshot ${currentImageIndex + 1}`}
+                            fill
+                            className="object-cover"
+                            unoptimized
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+
+                      {/* Carousel Controls */}
+                      {selectedProject.images.length > 1 && (
+                        <>
+                          <button
+                            onClick={prevImage}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all opacity-0 group-hover/carousel:opacity-100 backdrop-blur-sm border border-pink-100 text-[var(--color-primary)]"
+                          >
+                            <ChevronLeft size={24} />
+                          </button>
+                          <button
+                            onClick={nextImage}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all opacity-0 group-hover/carousel:opacity-100 backdrop-blur-sm border border-pink-100 text-[var(--color-primary)]"
+                          >
+                            <ChevronRight size={24} />
+                          </button>
+
+                          {/* Dots Indicator */}
+                          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                            {selectedProject.images.map((_, i) => (
+                              <button
+                                key={i}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setCurrentImageIndex(i);
+                                }}
+                                className={`h-2 rounded-full transition-all ${
+                                  i === currentImageIndex 
+                                    ? "w-6 bg-[var(--color-primary)]" 
+                                    : "w-2 bg-white/60 hover:bg-white"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                )}
                 </div>
 
                 <div className="mb-8">
