@@ -15,34 +15,31 @@ import {
 export const projects = [
   {
     id: 1,
-    title: "AI Content Generator",
+    title: "eCommerce Website (React & Tailwind)",
     shortDescription:
-      "An intelligent content creation platform powered by OpenAI",
-    technologies: ["Next.js", "OpenAI API", "Tailwind CSS", "Node.js", "React"],
+      "An e-commerce website built using React and Tailwind CSS",
+    technologies: ["React", "Vite", "HTML", "CSS", "Tailwind CSS"],
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-    demoUrl: "#",
-    githubUrl: "#",
+      "/projects_imgs/boba_website_overview.png",
+    demoUrl: "https://bobakitty-ecommerce-app.vercel.app/",
+    githubUrl: "https://github.com/rachanahegde/bobakitty-ecommerce-app/tree/main",
     overview:
-      "Built an AI-powered content generator that helps marketers and writers create engaging copy with contextual understanding and brand voice consistency.",
+      "A bubble tea kitty café eCommerce website built with React with Vite and Tailwind CSS. Features include responsive layout; product listings, shopping cart, and checkout process. This project involved understanding how to design and build reusable components in React, work with hooks and implement state management, create a responsive layout that ensures the website looks amazing across multiple devices and screen sizes, and set up router-based navigation (with React Router).",
     features: [
-      "Real-time AI content generation with custom prompts",
-      "Brand voice customization and tone adjustment",
-      "Multi-language support with automatic translation",
-      "Content templates for various use cases",
-      "Export functionality in multiple formats",
+      "Responsive layout for mobile, tablet, desktop.",
+      "Shop page with product listings, shopping cart, and checkout process",
+      "Drinks menu page featuring different categories of drinks (i.e. milk tea, fruit tea, etc.). The drinks images are generated with ChatGPT and Dall E.",
+      "Contact page",
+      "Home page with featured drinks, about section, and buttons linking to other important website pages",
     ],
     techStack: [
-      { name: "Next.js", icon: Atom },
       { name: "React", icon: Atom },
-      { name: "OpenAI API", icon: Sparkles },
       { name: "Tailwind CSS", icon: Layout },
-      { name: "Node.js", icon: Server },
     ],
     implementation:
-      "Built with Next.js App Router and API routes for secure OpenAI integration. Implemented streaming responses for real-time content generation, with Redis caching to optimize API calls. Used Tailwind's utility-first workflow for responsive design.",
+      "Built with React with Vite and Tailwind CSS. Used Tailwind's utility-first workflow for responsive design. Implemented router-based navigation (with React Router).",
     challenges:
-      "Learned how to optimize API calls and implement request queuing to prevent rate limiting. Developed a custom caching strategy that reduced API costs by 60% while maintaining response quality.",
+      "I had a lot of issues deploying this website using Vercel. For instance, there were problems with my folder structure - the current structure is one that works and I had to check on Stack Overflow to figure out that some files were not in the correct places. I also had to make sure my image paths in JSON files weren't linking to images inside the src folder becuase the images have to be in the public folder if you link to them using JSON. I didn't realise this would be an issue until I started getting errors on Vercels. There is also certain code that you need to add to the vite.config.js file in order to deploy with Vercel (you may check the vite.config.js file in my repo if you are interested) but it ensures the deployment is successful. I also discovered that React websites on Vercel give 404 error when the website is refreshed even if you are using React Router and it works on your laptop. The solution to this is described in this stack overflow post and basically involves creating a vercel.json file on the root folder of your project containing the code snippet in the post: https://stackoverflow.com/questions/75963788/why-is-my-vercel-project-giving-me-an-error-404-on-refresh.\n\nThere was also a learning curve with working with React and Tailwind of course. I had to look up syntax and code snippets constantly to figure out how to build the simplest version of this website. I also chose not to prioritise security/authentication because I haven't studied ways for implementing those things in depth yet. That will be a priority for me in the future when I add more functionality to this website.\n\nOne issue that I didn't address in this MVP is making sure the cart data persists across page reloads and route changes. A solution to this is to use Redux for state management or local storage in the web browser but since I haven’t studied these concepts yet, I didn’t feel comfortable implementing it for this project.",
   },
   {
     id: 2,
