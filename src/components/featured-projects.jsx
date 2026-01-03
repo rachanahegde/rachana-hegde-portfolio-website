@@ -180,9 +180,6 @@ export default function FeaturedProjects() {
                   <h2 className="text-3xl sm:text-4xl font-[Playfair_Display] font-semibold mb-4 text-[var(--color-text)]">
                     {selectedProject.title}
                   </h2>
-                  <p className="text-lg text-[var(--color-text)/80]">
-                    {selectedProject.shortDescription}
-                  </p>
                   <div className="flex flex-wrap gap-4 mt-6">
                     <Button
                       onClick={() =>

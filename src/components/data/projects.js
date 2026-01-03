@@ -16,11 +16,14 @@ export const projects = [
   {
     id: 1,
     title: "eCommerce Website (React & Tailwind)",
-    shortDescription:
-      "An e-commerce website built using React and Tailwind CSS",
     technologies: ["React", "Vite", "HTML", "CSS", "Tailwind CSS"],
-    image:
+    image: "/projects_imgs/boba_website_overview.png",
+    images: [
       "/projects_imgs/boba_website_overview.png",
+      "/projects_imgs/ecommerce_shop.jpg",
+      "/projects_imgs/drinks_menu.jpg",
+      "/projects_imgs/shop_checkout.jpg",
+    ],
     demoUrl: "https://bobakitty-ecommerce-app.vercel.app/",
     githubUrl: "https://github.com/rachanahegde/bobakitty-ecommerce-app/tree/main",
     overview:
