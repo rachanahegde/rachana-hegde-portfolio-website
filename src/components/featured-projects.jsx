@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -26,6 +27,11 @@ export default function FeaturedProjects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const nextImage = (e) => {
     e.stopPropagation();
@@ -162,199 +168,201 @@ export default function FeaturedProjects() {
         </div>
       </div>
 
-      {/* Modal - Opens instantly */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.05 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md"
-            onClick={() => setSelectedProject(null)}
-          >
+      {/* Modal - Opens high-level via Portal */}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {selectedProject && (
             <motion.div
-              initial={{ scale: 0.98, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.98, opacity: 0 }}
-              transition={{ duration: 0.1, ease: "easeOut" }}
-              onAnimationComplete={() => setCurrentImageIndex(0)}
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-pink-100"
-              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.05 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-md"
+              onClick={() => setSelectedProject(null)}
             >
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 p-2 rounded-full bg-white/90 hover:bg-pink-50 shadow-lg transition-colors z-10"
+              <motion.div
+                initial={{ scale: 0.98, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.98, opacity: 0 }}
+                transition={{ duration: 0.1, ease: "easeOut" }}
+                onAnimationComplete={() => setCurrentImageIndex(0)}
+                className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-pink-100"
+                onClick={(e) => e.stopPropagation()}
               >
-                <X size={24} className="text-[var(--color-text)]" />
-              </button>
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-6 right-6 p-2 rounded-full bg-white/90 hover:bg-pink-50 shadow-lg transition-colors z-10"
+                >
+                  <X size={24} className="text-[var(--color-text)]" />
+                </button>
 
-              <div className="relative p-8 sm:p-12 text-[var(--color-text)]">
-                <div className="mb-8">
-                  <h2 className="text-3xl sm:text-4xl font-[Playfair_Display] font-semibold mb-4 text-[var(--color-text)]">
-                    {selectedProject.title}
-                  </h2>
-                  <div className="flex flex-wrap gap-4 mt-6">
-                    <Button
-                      onClick={() =>
-                        window.open(selectedProject.demoUrl, "_blank")
-                      }
-                      className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] hover:bg-pink-400 text-white shadow-lg transition-all"
-                    >
-                      <Globe size={18} />
-                      Live Demo
-                    </Button>
-                    <Button
-                      onClick={() =>
-                        window.open(selectedProject.githubUrl, "_blank")
-                      }
-                      className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-text)] hover:bg-[#2b2424] text-white shadow-lg transition-all"
-                    >
-                      <Github size={18} />
-                      GitHub
-                    </Button>
-                  </div>
+                <div className="relative p-8 sm:p-12 text-[var(--color-text)]">
+                  <div className="mb-8">
+                    <h2 className="text-3xl sm:text-4xl font-[Playfair_Display] font-semibold mb-4 text-[var(--color-text)]">
+                      {selectedProject.title}
+                    </h2>
+                    <div className="flex flex-wrap gap-4 mt-6">
+                      <Button
+                        onClick={() =>
+                          window.open(selectedProject.demoUrl, "_blank")
+                        }
+                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] hover:bg-pink-400 text-white shadow-lg transition-all"
+                      >
+                        <Globe size={18} />
+                        Live Demo
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          window.open(selectedProject.githubUrl, "_blank")
+                        }
+                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-text)] hover:bg-[#2b2424] text-white shadow-lg transition-all"
+                      >
+                        <Github size={18} />
+                        GitHub
+                      </Button>
+                    </div>
 
-                {/* 🔸 Image Carousel */}
-                {selectedProject.images && selectedProject.images.length > 0 && (
-                  <div className="mt-8 relative group/carousel">
-                    <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-pink-50/30 border border-pink-100 shadow-inner">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={currentImageIndex}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -20 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="relative w-full h-full"
-                        >
-                          <Image
-                            src={selectedProject.images[currentImageIndex]}
-                            alt={`${selectedProject.title} screenshot ${currentImageIndex + 1}`}
-                            fill
-                            className="object-cover object-top"
-                            unoptimized
-                          />
-                        </motion.div>
-                      </AnimatePresence>
-
-                      {/* Carousel Controls */}
-                      {selectedProject.images.length > 1 && (
-                        <>
-                          <button
-                            onClick={prevImage}
-                            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all opacity-0 group-hover/carousel:opacity-100 backdrop-blur-sm border border-pink-100 text-[var(--color-primary)]"
-                          >
-                            <ChevronLeft size={24} />
-                          </button>
-                          <button
-                            onClick={nextImage}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all opacity-0 group-hover/carousel:opacity-100 backdrop-blur-sm border border-pink-100 text-[var(--color-primary)]"
-                          >
-                            <ChevronRight size={24} />
-                          </button>
-
-                          {/* Dots Indicator */}
-                          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                            {selectedProject.images.map((_, i) => (
-                              <button
-                                key={i}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setCurrentImageIndex(i);
-                                }}
-                                className={`h-2 rounded-full transition-all ${
-                                  i === currentImageIndex 
-                                    ? "w-6 bg-[var(--color-primary)]" 
-                                    : "w-2 bg-white/60 hover:bg-white"
-                                }`}
+                    {/* 🔸 Image Carousel */}
+                    {selectedProject.images && selectedProject.images.length > 0 && (
+                      <div className="mt-8 relative group/carousel">
+                        <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-pink-50/30 border border-pink-100 shadow-inner">
+                          <AnimatePresence mode="wait">
+                            <motion.div
+                              key={currentImageIndex}
+                              initial={{ opacity: 0, x: 20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -20 }}
+                              transition={{ duration: 0.3, ease: "easeInOut" }}
+                              className="relative w-full h-full"
+                            >
+                              <Image
+                                src={selectedProject.images[currentImageIndex]}
+                                alt={`${selectedProject.title} screenshot ${currentImageIndex + 1}`}
+                                fill
+                                className="object-cover object-top"
+                                unoptimized
                               />
-                            ))}
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                )}
-                </div>
+                            </motion.div>
+                          </AnimatePresence>
 
-                <div className="mb-8">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Target className="text-[var(--color-primary)]" size={20} />
-                    <h3 className="text-xl font-semibold">Project Overview</h3>
-                  </div>
-                  <p className="leading-relaxed">{selectedProject.overview}</p>
-                </div>
+                          {/* Carousel Controls */}
+                          {selectedProject.images.length > 1 && (
+                            <>
+                              <button
+                                onClick={prevImage}
+                                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all opacity-0 group-hover/carousel:opacity-100 backdrop-blur-sm border border-pink-100 text-[var(--color-primary)]"
+                              >
+                                <ChevronLeft size={24} />
+                              </button>
+                              <button
+                                onClick={nextImage}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all opacity-0 group-hover/carousel:opacity-100 backdrop-blur-sm border border-pink-100 text-[var(--color-primary)]"
+                              >
+                                <ChevronRight size={24} />
+                              </button>
 
-                <div className="mb-8">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Sparkles
-                      className="text-[var(--color-primary)]"
-                      size={20}
-                    />
-                    <h3 className="text-xl font-semibold">Key Features</h3>
-                  </div>
-                  <ul className="space-y-4">
-                    {selectedProject.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <CheckCircle2
-                          className="text-[var(--color-leaf)] mt-1 flex-shrink-0"
-                          size={18}
-                        />
-                        <span className="leading-relaxed">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {selectedProject.techStack && (
-                  <div className="mb-8">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Code2 className="text-[var(--color-primary)]" size={20} />
-                      <h3 className="text-xl font-semibold">Tech Stack</h3>
-                    </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                      {selectedProject.techStack.map((tech, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center gap-3 p-3 rounded-xl bg-pink-50/50 border border-pink-100"
-                        >
-                          <tech.icon className="text-[var(--color-primary)]" size={20} />
-                          <span className="font-medium">{tech.name}</span>
+                              {/* Dots Indicator */}
+                              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                                {selectedProject.images.map((_, i) => (
+                                  <button
+                                    key={i}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setCurrentImageIndex(i);
+                                    }}
+                                    className={`h-2 rounded-full transition-all ${i === currentImageIndex
+                                      ? "w-6 bg-[var(--color-primary)]"
+                                      : "w-2 bg-white/60 hover:bg-white"
+                                      }`}
+                                  />
+                                ))}
+                              </div>
+                            </>
+                          )}
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    )}
                   </div>
-                )}
 
-                {selectedProject.implementation && (
-                  <div className="mb-8">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Zap className="text-[var(--color-primary)]" size={20} />
-                      <h3 className="text-xl font-semibold">Implementation</h3>
-                    </div>
-                    <p className="leading-relaxed p-4 rounded-2xl bg-slate-50 border border-slate-100 italic text-[var(--color-text)/90]">
-                      {selectedProject.implementation}
-                    </p>
-                  </div>
-                )}
-
-                {selectedProject.challenges && (
                   <div className="mb-8">
                     <div className="flex items-center gap-2 mb-3">
                       <Target className="text-[var(--color-primary)]" size={20} />
-                      <h3 className="text-xl font-semibold">Challenges & Learnings</h3>
+                      <h3 className="text-xl font-semibold">Project Overview</h3>
                     </div>
-                    <p className="leading-relaxed p-4 rounded-2xl bg-amber-50/50 border border-amber-100 text-[var(--color-text)/90]">
-                      {selectedProject.challenges}
-                    </p>
+                    <p className="leading-relaxed">{selectedProject.overview}</p>
                   </div>
-                )}
-              </div>
+
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Sparkles
+                        className="text-[var(--color-primary)]"
+                        size={20}
+                      />
+                      <h3 className="text-xl font-semibold">Key Features</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {selectedProject.features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <CheckCircle2
+                            className="text-[var(--color-leaf)] mt-1 flex-shrink-0"
+                            size={18}
+                          />
+                          <span className="leading-relaxed">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {selectedProject.techStack && (
+                    <div className="mb-8">
+                      <div className="flex items-center gap-2 mb-4">
+                        <Code2 className="text-[var(--color-primary)]" size={20} />
+                        <h3 className="text-xl font-semibold">Tech Stack</h3>
+                      </div>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        {selectedProject.techStack.map((tech, i) => (
+                          <div
+                            key={i}
+                            className="flex items-center gap-3 p-3 rounded-xl bg-pink-50/50 border border-pink-100"
+                          >
+                            <tech.icon className="text-[var(--color-primary)]" size={20} />
+                            <span className="font-medium">{tech.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedProject.implementation && (
+                    <div className="mb-8">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Zap className="text-[var(--color-primary)]" size={20} />
+                        <h3 className="text-xl font-semibold">Implementation</h3>
+                      </div>
+                      <p className="leading-relaxed p-4 rounded-2xl bg-slate-50 border border-slate-100 italic text-[var(--color-text)/90]">
+                        {selectedProject.implementation}
+                      </p>
+                    </div>
+                  )}
+
+                  {selectedProject.challenges && (
+                    <div className="mb-8">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Target className="text-[var(--color-primary)]" size={20} />
+                        <h3 className="text-xl font-semibold">Challenges & Learnings</h3>
+                      </div>
+                      <p className="leading-relaxed p-4 rounded-2xl bg-amber-50/50 border border-amber-100 text-[var(--color-text)/90]">
+                        {selectedProject.challenges}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section >
   );
 }
