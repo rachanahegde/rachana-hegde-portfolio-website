@@ -59,7 +59,7 @@ export default function FeaturedProjects() {
   };
 
   return (
-    <section id="featured-projects" className="relative pb-24 bg-[var(--color-bg)]/70 text-[var(--color-text)] overflow-hidden">
+    <section id="featured-projects" className="relative pb-10 bg-[var(--color-bg)]/70 text-[var(--color-text)] overflow-hidden">
       {/* Meteors background effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <Meteors number={10} />

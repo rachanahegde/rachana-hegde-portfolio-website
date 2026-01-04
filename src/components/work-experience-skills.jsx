@@ -104,7 +104,7 @@ export default function WorkExperienceSkills() {
   ];
 
   return (
-    <section className="relative pt-24 pb-8 bg-[var(--color-bg)]/70 text-[var(--color-text)]">
+    <section className="relative pt-12 pb-8 bg-[var(--color-bg)]/70 text-[var(--color-text)]">
       <Container>
         {/* Statistics Section with NumberTicker for Experience, Projects, and Technologies */}
         <BlurFade delay={0.05} inView>
