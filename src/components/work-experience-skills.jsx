@@ -35,7 +35,7 @@ export default function WorkExperienceSkills() {
         "JavaScript",
         "Next.js",
         "Tailwind CSS",
-        "React (Hooks, Context API, Router, REST APIs)",
+        "React (Hooks, React Query, Context API)",
         "UI Design (Figma, Adobe XD)",
         "Responsive Design",
       ],
@@ -52,7 +52,7 @@ export default function WorkExperienceSkills() {
     AI: {
       icon: <Cpu className="text-[var(--color-primary)]" size={26} />,
       color: "from-blue-50 via-white to-pink-50",
-      skills: ["Python", "RAG", "Agentic AI", "LLMs", "Prompt Engineering"],
+      skills: ["Python", "RAG", "LlamaIndex", "LLMs", "Prompt Engineering"],
     },
     Other: {
       icon: <Wrench className="text-[var(--color-primary)]" size={26} />,
@@ -62,7 +62,8 @@ export default function WorkExperienceSkills() {
         "Software Testing",
         "IT Support",
         "Git & GitHub",
-        "Databases",
+        "Databases & MongoDB",
+        "Postman (API Testing)",
         "Data Visualization",
       ],
     },
@@ -80,13 +81,12 @@ export default function WorkExperienceSkills() {
   };
 
   const responsibilities = [
-    "Design and build responsive, high-quality UIs with Figma, React, Next.js, and Tailwind CSS",
-    "Replace legacy JS/HTML with modern React applications",
-    "Collaborate with Head of Technology and Lead Backend Developer on architecture",
-    "Conduct code reviews, optimize performance, contribute to project planning",
-    "Integrate frontend UI with custom API endpoints built in Express.js",
-    "Secondary IT support duties including hardware maintenance and Workspace admin",
-    "Leverage AI tools (Cursor, Copilot, Claude) to streamline development workflows",
+    "Architect and develop responsive UI components and bespoke white-label client pages using React, Next.js, and Tailwind CSS",
+    "Engineer reusable components and data-fetching logic, including custom React Query hooks for integration with bespoke APIs",
+    "Collaborate with senior technical leadership to plan frontend architecture, refine requirements, and lead implementation flows",
+    "Lead end-to-end user testing (BRR Hub v1) and translate cross-team feedback into actionable UX and product improvements",
+    "Create comprehensive API migration documentation by auditing live request flows for registration and webcast lifecycles",
+    "Manage internal technical operations, including performance diagnostics, code reviews, and Google Workspace administration",
   ];
 
   const techStack = [
@@ -104,7 +104,7 @@ export default function WorkExperienceSkills() {
   ];
 
   return (
-    <section className="relative py-24 bg-[var(--color-bg)]/70 text-[var(--color-text)]">
+    <section className="relative pt-24 pb-8 bg-[var(--color-bg)]/70 text-[var(--color-text)]">
       <Container>
         {/* Statistics Section with NumberTicker for Experience, Projects, and Technologies */}
         <BlurFade delay={0.05} inView>
@@ -263,15 +263,15 @@ export default function WorkExperienceSkills() {
                         Projects & Prototypes
                       </h4>
                     </div>
-                    <ul className="space-y-3">
+                    <ul className="space-y-4">
                       <li>
-                        <strong>AI Voice Transcription Prototype:</strong> Built
-                        a Whisper API-based web app with searchable transcripts
-                        and dynamic highlighting.
+                        <strong>AI-Driven Prototypes:</strong> Developed a Whisper-based voice transcription tool with searchable transcripts and a RAG chatbot built with LlamaIndex for internal knowledge retrieval.
                       </li>
                       <li>
-                        <strong>RAG Chatbot:</strong> Created a LlamaIndex-based
-                        chatbot using LLMs for internal onboarding support.
+                        <strong>Event Management Platform:</strong> Designed an internal system supporting live and on-demand webcasts, streamlining event setup, scheduling, and delivery flows.
+                      </li>
+                      <li>
+                        <strong>Engage Investor Platform:</strong> Built key presentation and content discovery flows for a high-traffic hub serving 10,000+ users.
                       </li>
                     </ul>
                   </div>

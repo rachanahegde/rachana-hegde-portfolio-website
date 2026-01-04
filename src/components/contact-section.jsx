@@ -7,7 +7,7 @@ import { Mail, Github, Instagram } from "lucide-react";
 
 export default function ContactSection() {
     return (
-        <section id="contact" className="relative py-24 bg-[var(--color-bg)]/70 text-[var(--color-text)]">
+        <section id="contact" className="relative pt-8 pb-24 bg-[var(--color-bg)]/70 text-[var(--color-text)]">
             <BlurFade delay={0.2} inView>
                 <div className="container mx-auto px-6 text-center">
                     <SparklesText
@@ -22,19 +22,19 @@ export default function ContactSection() {
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                         <ShimmerButton
-                            onClick={() => window.location.href = "mailto:rachana@example.com"}
+                            onClick={() => window.location.href = "mailto:hegde.rachana99@gmail.com"}
                             className="bg-[var(--color-primary)] text-white"
                         >
                             <Mail className="mr-2" size={18} /> Email Me
                         </ShimmerButton>
                         <ShimmerButton
-                            onClick={() => window.open("https://github.com/rachana", "_blank")}
+                            onClick={() => window.open("https://github.com/rachanahegde", "_blank")}
                             className="bg-[#333] text-white"
                         >
                             <Github className="mr-2" size={18} /> GitHub
                         </ShimmerButton>
                         <ShimmerButton
-                            onClick={() => window.open("https://instagram.com/rachana", "_blank")}
+                            onClick={() => window.open("https://instagram.com/rachanacodes", "_blank")}
                             className="bg-[#E1306C] text-white"
                         >
                             <Instagram className="mr-2" size={18} /> Instagram
