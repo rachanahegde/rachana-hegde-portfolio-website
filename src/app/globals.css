@@ -39,15 +39,7 @@ body {
   @apply bg-[var(--color-bg)] text-[var(--color-text)] font-[Inter] antialiased;
 }
 
-/* ⚡ Performance Optimizations */
-/* Optimize animations by using GPU-accelerated properties */
-@media (prefers-reduced-motion: no-preference) {
-  * {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-  }
-}
+/* ⚡ Performance Optimizations - Handled selectively per component to avoid breaking layout */
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {

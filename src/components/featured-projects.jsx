@@ -33,6 +33,17 @@ export default function FeaturedProjects() {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedProject]);
+
   const nextImage = (e) => {
     e.stopPropagation();
     if (selectedProject?.images) {
@@ -176,56 +187,56 @@ export default function FeaturedProjects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.05 }}
-              className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-md"
+              transition={{ duration: 0.15 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/60 backdrop-blur-md"
               onClick={() => setSelectedProject(null)}
             >
               <motion.div
-                initial={{ scale: 0.98, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.98, opacity: 0 }}
-                transition={{ duration: 0.1, ease: "easeOut" }}
+                initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
                 onAnimationComplete={() => setCurrentImageIndex(0)}
-                className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-pink-100"
+                className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-pink-100"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-6 right-6 p-2 rounded-full bg-white/90 hover:bg-pink-50 shadow-lg transition-colors z-10"
+                  className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full bg-white/90 hover:bg-pink-50 shadow-lg transition-colors z-20"
                 >
-                  <X size={24} className="text-[var(--color-text)]" />
+                  <X size={20} className="text-[var(--color-text)] sm:w-6 sm:h-6" />
                 </button>
 
-                <div className="relative p-8 sm:p-12 text-[var(--color-text)]">
-                  <div className="mb-8">
-                    <h2 className="text-3xl sm:text-4xl font-[Playfair_Display] font-semibold mb-4 text-[var(--color-text)]">
+                <div className="relative p-5 sm:p-10 text-[var(--color-text)]">
+                  <div className="mb-6 sm:mb-8">
+                    <h2 className="text-2xl sm:text-4xl font-[Playfair_Display] font-semibold mb-3 sm:mb-4 text-[var(--color-text)] pr-8">
                       {selectedProject.title}
                     </h2>
-                    <div className="flex flex-wrap gap-4 mt-6">
+                    <div className="flex flex-wrap gap-3 sm:gap-4 mt-4 sm:mt-6">
                       <Button
                         onClick={() =>
                           window.open(selectedProject.demoUrl, "_blank")
                         }
-                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] hover:bg-pink-400 text-white shadow-lg transition-all"
+                        className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-[var(--color-primary)] hover:bg-pink-400 text-white shadow-lg transition-all text-sm sm:text-base"
                       >
-                        <Globe size={18} />
+                        <Globe size={16} className="sm:w-[18px]" />
                         Live Demo
                       </Button>
                       <Button
                         onClick={() =>
                           window.open(selectedProject.githubUrl, "_blank")
                         }
-                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-text)] hover:bg-[#2b2424] text-white shadow-lg transition-all"
+                        className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-[var(--color-text)] hover:bg-[#2b2424] text-white shadow-lg transition-all text-sm sm:text-base"
                       >
-                        <Github size={18} />
+                        <Github size={16} className="sm:w-[18px]" />
                         GitHub
                       </Button>
                     </div>
 
                     {/* 🔸 Image Carousel */}
                     {selectedProject.images && selectedProject.images.length > 0 && (
-                      <div className="mt-8 relative group/carousel">
-                        <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-pink-50/30 border border-pink-100 shadow-inner">
+                      <div className="mt-6 sm:mt-8 relative group/carousel">
+                        <div className="relative aspect-video w-full overflow-hidden rounded-xl sm:rounded-2xl bg-pink-50/30 border border-pink-100 shadow-inner">
                           <AnimatePresence mode="wait">
                             <motion.div
                               key={currentImageIndex}
@@ -250,19 +261,19 @@ export default function FeaturedProjects() {
                             <>
                               <button
                                 onClick={prevImage}
-                                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all opacity-0 group-hover/carousel:opacity-100 backdrop-blur-sm border border-pink-100 text-[var(--color-primary)]"
+                                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all opacity-100 sm:opacity-0 sm:group-hover/carousel:opacity-100 backdrop-blur-sm border border-pink-100 text-[var(--color-primary)]"
                               >
-                                <ChevronLeft size={24} />
+                                <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
                               </button>
                               <button
                                 onClick={nextImage}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all opacity-0 group-hover/carousel:opacity-100 backdrop-blur-sm border border-pink-100 text-[var(--color-primary)]"
+                                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all opacity-100 sm:opacity-0 sm:group-hover/carousel:opacity-100 backdrop-blur-sm border border-pink-100 text-[var(--color-primary)]"
                               >
-                                <ChevronRight size={24} />
+                                <ChevronRight size={20} className="sm:w-6 sm:h-6" />
                               </button>
 
                               {/* Dots Indicator */}
-                              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                              <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2">
                                 {selectedProject.images.map((_, i) => (
                                   <button
                                     key={i}
@@ -270,9 +281,9 @@ export default function FeaturedProjects() {
                                       e.stopPropagation();
                                       setCurrentImageIndex(i);
                                     }}
-                                    className={`h-2 rounded-full transition-all ${i === currentImageIndex
-                                      ? "w-6 bg-[var(--color-primary)]"
-                                      : "w-2 bg-white/60 hover:bg-white"
+                                    className={`h-1.5 sm:h-2 rounded-full transition-all ${i === currentImageIndex
+                                      ? "w-4 sm:w-6 bg-[var(--color-primary)]"
+                                      : "w-1.5 sm:w-2 bg-white/60 hover:bg-white"
                                       }`}
                                   />
                                 ))}
