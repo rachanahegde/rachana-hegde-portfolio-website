@@ -124,7 +124,7 @@ export default function WorkExperienceSkills() {
               <div className="flex items-center justify-center gap-2 mb-2">
                 <Rocket className="text-[var(--color-primary)]" size={24} />
                 <NumberTicker
-                  value={15}
+                  value={6}
                   className="text-4xl font-bold text-[var(--color-primary)]"
                 />
                 <span className="text-4xl font-bold text-[var(--color-primary)]">+</span>
@@ -135,7 +135,7 @@ export default function WorkExperienceSkills() {
               <div className="flex items-center justify-center gap-2 mb-2">
                 <Code2 className="text-[var(--color-primary)]" size={24} />
                 <NumberTicker
-                  value={15}
+                  value={10}
                   className="text-4xl font-bold text-[var(--color-primary)]"
                 />
                 <span className="text-4xl font-bold text-[var(--color-primary)]">+</span>
