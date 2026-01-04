@@ -77,7 +77,7 @@ export default function FeaturedProjects() {
                 onClick={() => setSelectedProject(project)}
               >
                 {/* 🔸 Optimized card - removed BorderBeam for performance */}
-                <div className="relative overflow-hidden rounded-2xl shadow-lg bg-white border-2 border-pink-100 transition-all duration-200 hover:shadow-xl hover:border-[var(--color-primary)] h-[420px] flex flex-col">
+                <div className="relative overflow-hidden rounded-2xl shadow-lg bg-white border-2 border-pink-100 transition-all duration-200 hover:shadow-xl hover:border-[var(--color-primary)] h-[380px] flex flex-col">
                   {/* Image Section */}
                   <div className="relative h-48 w-full overflow-hidden flex-shrink-0 bg-gradient-to-br from-pink-50 to-sand/30">
                     <Image
@@ -136,19 +136,15 @@ export default function FeaturedProjects() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="p-6 flex flex-col justify-between flex-grow text-[var(--color-text)]">
+                  <div className="p-8 flex flex-col justify-between flex-grow text-[var(--color-text)]">
                     <div>
-                      <h3 className="text-xl font-semibold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors">
+                      <h3 className="text-xl font-semibold mb-4 text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors leading-tight">
                         {project.title}
                       </h3>
-                      {/* 2–3 sentence space */}
-                      <p className="text-sm text-[var(--color-text)/80] mb-4 line-clamp-3">
-                        {project.shortDescription}
-                      </p>
                     </div>
 
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mt-auto">
+                    <div className="flex flex-wrap gap-2 mt-auto pt-4">
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}

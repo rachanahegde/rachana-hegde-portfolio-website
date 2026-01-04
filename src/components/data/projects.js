@@ -47,7 +47,7 @@ export const projects = [
   {
     id: 2,
     title: "E-Commerce Dashboard",
-    shortDescription: "Analytics dashboard for online retail businesses",
+
     technologies: ["React", "D3.js", "Firebase", "Material UI", "JavaScript"],
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
@@ -78,8 +78,7 @@ export const projects = [
   {
     id: 3,
     title: "Portfolio Builder SaaS",
-    shortDescription:
-      "No-code platform for creating stunning portfolio websites",
+
     technologies: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS"],
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
@@ -110,8 +109,7 @@ export const projects = [
   {
     id: 4,
     title: "RAG Chatbot Assistant",
-    shortDescription:
-      "Context-aware chatbot using retrieval-augmented generation",
+
     technologies: ["Python", "LangChain", "Pinecone", "FastAPI", "React"],
     image:
       "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80",
@@ -142,7 +140,7 @@ export const projects = [
   {
     id: 5,
     title: "Design System Library",
-    shortDescription: "Comprehensive component library for consistent UIs",
+
     technologies: ["React", "TypeScript", "Storybook", "CSS Modules"],
     image:
       "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80",
@@ -173,7 +171,7 @@ export const projects = [
   {
     id: 6,
     title: "Real-Time Collaboration Tool",
-    shortDescription: "Collaborative workspace with live editing capabilities",
+
     technologies: ["Next.js", "WebSockets", "Redis", "MongoDB", "React"],
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
