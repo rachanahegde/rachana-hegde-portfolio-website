@@ -15,6 +15,32 @@ import {
 export const projects = [
   {
     id: 1,
+    title: "Rasoi: AI Recipe App",
+    technologies: ["Next.js", "Tailwind CSS", "Gemini SDK", "React Context", "NLP"],
+    image: "/projects_imgs/rasoi_app/rasoi_app_overview.png",
+    images: ["/projects_imgs/rasoi_app/rasoi_app_overview.png", "/projects_imgs/rasoi_app/Rasoi_chocolate_recipe.png", "/projects_imgs/rasoi_app/Rasoi_pesto_pasta_recipe.png", "/projects_imgs/rasoi_app/Rasoi_calendar.png"],
+    demoUrl: "https://rasoi-app.vercel.app/",
+    githubUrl: "https://github.com/rachanahegde/rasoi-app",
+    overview:
+      "An offline-first, AI-powered recipe application that enables users to generate, organize, and schedule recipes and grocery lists. Built with a focus on high-performance interactions and secure client-side AI integration.",
+    features: [
+      "AI-driven recipe generation using Next.js Server Actions and Gemini SDK",
+      "Offline-first state architecture with React Context and persistent local storage",
+      "Automatic recipe tagging system using Compromise NLP library",
+      "Secure API key encryption (AES-256-GCM) with HTTP-only cookie storage",
+      "Drag-and-drop meal reordering and advanced ingredient filtering"
+    ],
+    techStack: [
+      { name: "Next.js", icon: Atom },
+      { name: "Gemini AI", icon: Sparkles },
+      { name: "Tailwind CSS", icon: Layout },
+      { name: "NLP", icon: Cpu }
+    ],
+    implementation:
+      "Utilized Next.js 15 Server Actions for secure AI processing and React Context for managing offline state. Implemented lightweight lexical analysis for tagging and optimized bundle size through lazy loading."
+  },
+  {
+    id: 2,
     title: "eCommerce Website (React & Tailwind)",
     technologies: ["React", "Vite", "HTML", "CSS", "Tailwind CSS"],
     image: "/projects_imgs/boba_website/boba_website_overview.png",
@@ -43,32 +69,6 @@ export const projects = [
       "Built with React with Vite and Tailwind CSS. Used Tailwind's utility-first workflow for responsive design. Implemented router-based navigation (with React Router).",
     challenges:
       "Successfully navigated Vercel deployment complexities, including resolving React Router 404 errors and optimizing asset pathing for production. Mastered the fundamentals of React and Tailwind CSS through rapid development, while identifying key areas for future growth such as persistent state management and enhanced security.",
-  },
-  {
-    id: 2,
-    title: "Rasoi: AI Recipe App",
-    technologies: ["Next.js", "Tailwind CSS", "Gemini SDK", "React Context", "NLP"],
-    image: "/projects_imgs/rasoi_app/rasoi_app_overview.png",
-    images: ["/projects_imgs/rasoi_app/rasoi_app_overview.png", "/projects_imgs/rasoi_app/Rasoi_chocolate_recipe.png", "/projects_imgs/rasoi_app/Rasoi_pesto_pasta_recipe.png", "/projects_imgs/rasoi_app/Rasoi_calendar.png"],
-    demoUrl: "https://rasoi-app.vercel.app/",
-    githubUrl: "https://github.com/rachanahegde/rasoi-app",
-    overview:
-      "An offline-first, AI-powered recipe application that enables users to generate, organize, and schedule recipes and grocery lists. Built with a focus on high-performance interactions and secure client-side AI integration.",
-    features: [
-      "AI-driven recipe generation using Next.js Server Actions and Gemini SDK",
-      "Offline-first state architecture with React Context and persistent local storage",
-      "Automatic recipe tagging system using Compromise NLP library",
-      "Secure API key encryption (AES-256-GCM) with HTTP-only cookie storage",
-      "Drag-and-drop meal reordering and advanced ingredient filtering"
-    ],
-    techStack: [
-      { name: "Next.js", icon: Atom },
-      { name: "Gemini AI", icon: Sparkles },
-      { name: "Tailwind CSS", icon: Layout },
-      { name: "NLP", icon: Cpu }
-    ],
-    implementation:
-      "Utilized Next.js 15 Server Actions for secure AI processing and React Context for managing offline state. Implemented lightweight lexical analysis for tagging and optimized bundle size through lazy loading."
   },
   {
     id: 3,
