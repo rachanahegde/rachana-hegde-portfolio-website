@@ -97,31 +97,6 @@ export const projects = [
   },
   {
     id: 4,
-    title: "IT Dashboard Website",
-    technologies: ["React", "Figma", "Tailwind CSS", "Context API"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    images: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"],
-    demoUrl: "#",
-    githubUrl: "#",
-    overview:
-      "A comprehensive internal IT management dashboard developed to streamline employee directories, request submissions, and ticket tracking workflows. Focused on utility-first design and responsive accessibility.",
-    features: [
-      "Employee directory with advanced search and filtering",
-      "IT request submission and real-time ticket status tracking",
-      "Global state management for consistent session data across routes",
-      "High-fidelity UI designed in Figma with bespoke component library"
-    ],
-    techStack: [
-      { name: "React", icon: Atom },
-      { name: "Tailwind CSS", icon: Layout },
-      { name: "Context API", icon: Braces },
-      { name: "Figma", icon: Palette }
-    ],
-    implementation:
-      "Designed and built from the ground up using React's functional component model. Used Tailwind for responsive layouts and Context API to manage complex global states without prop drilling."
-  },
-  {
-    id: 5,
     title: "Tarot Card Reader Website",
     technologies: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS"],
     image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80",
@@ -146,7 +121,7 @@ export const projects = [
       "Focused on vanilla JS for DOM manipulation and event handling to keep the application lightweight. Used Tailwind CSS 4 features for modern, aesthetic styling."
   },
   {
-    id: 6,
+    id: 5,
     title: "PlotPalette Website",
     technologies: ["Flask", "Python", "GPT-4", "DALL·E 3", "JavaScript"],
     image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80",
@@ -169,5 +144,30 @@ export const projects = [
     ],
     implementation:
       "Architected a Flask-based backend to manage API orchestration and state persistence. Implemented a robust frontend integration for real-time AI-generated content display."
+  },
+  {
+    id: 6,
+    title: "IT Dashboard Website",
+    technologies: ["React", "Figma", "Tailwind CSS", "Context API"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    images: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"],
+    demoUrl: "https://it-dashboard-final.vercel.app/",
+    githubUrl: "https://github.com/rachanahegde/it-dashboard-final",
+    overview:
+      "A comprehensive internal IT management dashboard developed to streamline employee directories, request submissions, and ticket tracking workflows. Focused on utility-first design and responsive accessibility.",
+    features: [
+      "Employee directory with advanced search and filtering",
+      "IT request submission and real-time ticket status tracking",
+      "Global state management for consistent session data across routes",
+      "High-fidelity UI designed in Figma with bespoke component library"
+    ],
+    techStack: [
+      { name: "React", icon: Atom },
+      { name: "Tailwind CSS", icon: Layout },
+      { name: "Context API", icon: Braces },
+      { name: "Figma", icon: Palette }
+    ],
+    implementation:
+      "Designed and built from the ground up using React's functional component model. Used Tailwind for responsive layouts and Context API to manage complex global states without prop drilling."
   }
 ];
