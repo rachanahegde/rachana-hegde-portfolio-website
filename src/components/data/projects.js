@@ -122,31 +122,6 @@ export const projects = [
   },
   {
     id: 5,
-    title: "PlotPalette Website",
-    technologies: ["Flask", "Python", "GPT-4", "DALL·E 3", "JavaScript"],
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80",
-    images: ["https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80"],
-    demoUrl: "https://rachana99.pythonanywhere.com/",
-    githubUrl: "https://tinyurl.com/t6u4wvwu",
-    overview:
-      "A creative writing platform developed as part of an MSc dissertation. Enables writers to outline stories, generate visual character concepts, and overcome writer's block using Generative AI.",
-    features: [
-      "Interactive storyboarding tool for comprehensive narrative outlining",
-      "AI plot idea generation integrated with OpenAI's GPT-4 API",
-      "Consistent character and scene art generation using DALL·E 3",
-      "Validated utility for addressing writer's block through user studies"
-    ],
-    techStack: [
-      { name: "Flask", icon: Server },
-      { name: "Python", icon: Code2 },
-      { name: "OpenAI API", icon: Cpu },
-      { name: "DALL·E 3", icon: Sparkles }
-    ],
-    implementation:
-      "Architected a Flask-based backend to manage API orchestration and state persistence. Implemented a robust frontend integration for real-time AI-generated content display."
-  },
-  {
-    id: 6,
     title: "IT Dashboard Website",
     technologies: ["React", "Figma", "Tailwind CSS", "Context API"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
